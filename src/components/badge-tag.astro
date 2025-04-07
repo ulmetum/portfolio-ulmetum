@@ -1,0 +1,64 @@
+---
+// #75bcf6
+import Nextjs from '@/assets/svgs/nextjs.svg'
+import Wordpress from '@/assets/svgs/wordpress.svg'
+import Strapi from '@/assets/svgs/strapi.svg'
+import Tailwindcss from '@/assets/svgs/tailwindcss.svg'
+import CSS from '@/assets/svgs/css.svg'
+import JS from '@/assets/svgs/js.svg'
+
+interface Props {
+  classNames?: string
+  text: string
+}
+
+const { classNames, text } = Astro.props
+
+const tags = [
+  {
+    name: 'Next.js',
+    classNames: 'bg-black text-white',
+    icon: Nextjs,
+  },
+  {
+    name: 'Tailwind CSS',
+    classNames: 'bg-[#003159] text-white',
+    icon: Tailwindcss,
+  },
+  {
+    name: 'Wordpress',
+    classNames: 'bg-[#444240] text-white',
+    icon: Wordpress,
+  },
+  {
+    name: 'Strapi',
+    classNames: 'bg-[#4945FD] text-white',
+    icon: Strapi,
+  },
+  {
+    name: 'CSS',
+    classNames: 'bg-[#264DE4] text-white',
+    icon: CSS,
+  },
+  {
+    name: 'JavaScript',
+    classNames: 'bg-[#DF9C29] text-white',
+    icon: JS,
+  },
+]
+
+const tag = tags.find((tag) => tag.name === text)
+const colorTag = tag?.classNames
+const icon = tag?.icon
+---
+
+<span
+  class:list={[
+    'text-xs font-medium px-2.5 py-1.25 rounded-full flex items-center gap-x-1',
+    classNames,
+    colorTag,
+  ]}
+>
+  <span>{icon && <tag.icon class="inline-block w-6 h-6 text-white" />}</span>
+  <span>{text}</span>
+</span>
