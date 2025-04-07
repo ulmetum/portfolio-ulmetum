@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-body: 'Onest Variable', 'sans-serif';
+  --font-headings: 'Oswald Variable', 'sans-serif';
+
+  /* Color */
+  --color-color: #18181b;
+  --color-color-rgb: 24, 24, 27;
+  --color-background: #f6f2ef;
+  --color-background-rgb: 246, 242, 239;
+  --color-primary: #b45309;
+  --color-primary-rgb: 180, 83, 9;
+  --color-secondary: #082f49;
+  --color-secondary-rgb: 8, 47, 73;
+  --color-turquoise: #349098;
+  --color-turquoise-rgb: 52, 144, 152;
+  --color-purple-pale: #b06dcc;
+  --color-purple-pale-rgb: 176, 109, 204;
+  --color-sky-pale: #61bbf7;
+
+  /* Font sizes */
+  --text-fs-100: clamp(0.88rem, calc(0.96rem + -0.09vw), 0.94rem);
+  --text-fs-200: clamp(1rem, calc(0.93rem + 0.33vw), 1.105rem);
+  --text-fs-300: clamp(1.105rem, calc(1.05rem + 0.63vw), 1.28rem);
+  --text-fs-400: clamp(1.62rem, calc(1.31rem + 1.53vw), 2.5rem);
+  --text-fs-500: clamp(1.94rem, calc(1.39rem + 2.77vw), 3.53rem);
+  --text-fs-600: clamp(2.33rem, calc(1.41rem + 4.63vw), 5rem);
+  --text-fs-700: clamp(3rem, calc(2rem + 5vw), 5.6rem);
+}
+
+@layer theme {
+  .dark {
+    --color-color: #f4f4f5;
+    --color-background: #09090b;
+    --color-primary: #f59e0b;
+    --color-secondary: #bae6fd;
+    --color-turquoise: #5fdde5;
+    --color-purple-pale: #e0b3f3;
+    --color-sky-pale: #a5d8fa;
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+    --color: #18181b;
+    --color-rgb: 24, 24, 27;
+    --background: #f6f2ef;
+    --background-rgb: 246, 242, 239;
+    --primary: #b45309;
+    --primary-rgb: 180, 83, 9;
+    --secondary: #082f49;
+    --secondary-rgb: 8, 47, 73;
+    --turquoise: #349098;
+    --turquoise-rgb: 52, 144, 152;
+    --purple-pale: #b06dcc;
+    --purple-pale-rgb: 176, 109, 204;
+    --sky-pale: #61bbf7;
+  }
+
+  html {
+    @apply overflow-x-hidden;
+  }
+
+  body {
+    @apply font-normal text-color text-fs-100 bg-background text-pretty transition-colors duration-300;
+  }
+
+  body p {
+    @apply font-light leading-relaxed text-fs-300 transition-colors duration-300;
+  }
+
+  body li {
+    @apply leading-relaxed my-4 lg:text-[22px];
+    &:before {
+      @apply leading-none;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-headings font-light leading-[1.2] text-color text-balance my-6;
+  }
+
+  h1 {
+    @apply text-fs-600;
+  }
+  h2 {
+    @apply text-fs-500;
+  }
+  h3 {
+    @apply text-fs-400;
+  }
+  h4 {
+    @apply text-fs-300;
+  }
+  h5 {
+    @apply text-fs-200;
+  }
+}
