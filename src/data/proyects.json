@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "featuredImage": "/assets/images/portfolio/1.jpg",
+    "title": "La Isla del Yoga",
+    "description": "La Isla del Yoga es un espacio dedicado al bienestar, la calma interior y el autoconocimiento a través del yoga. Encontrarás artículos, consejos y recursos para profundizar en tu práctica.",
+    "link": "https://astro-portfolio.netlify.app/",
+    "tags": ["Next.js", "Blog", "Tailwind", "Wordpress"]
+  },
+  {
+    "id": 2,
+    "featuredImage": "/assets/images/portfolio/2.jpg",
+    "title": "Descubriendolo los Astros",
+    "description": "Web que explora el vasto universo de la astronomía y la astrología y donde podrás descubrir los misterios del cosmos, aprender sobre los planetas, estrellas y constelaciones. ",
+    "link": "https://astro-portfolio.netlify.app/",
+    "tags": ["Next.js", "Strapi", "Tailwind"]
+  },
+  {
+    "id": 3,
+    "featuredImage": "/assets/images/portfolio/3.jpg",
+    "title": "Creando Yoga",
+    "description": "Escuela online dedicada a enseñar y profundizar en la práctica del yoga desde casa. Ofrece una variedad de cursos y clases diseñados para todos los niveles.",
+    "link": "https://astro-portfolio.netlify.app/",
+    "tags": ["Wordpress", "CSS", "JavaScript"]
+  }
+]
