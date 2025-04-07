@@ -4,7 +4,7 @@
 
 @theme {
   --font-body: 'Onest Variable', 'sans-serif';
-  --font-headings: 'Oswald Variable', 'sans-serif';
+  /* --font-headings: 'Onest Variable', 'sans-serif'; */
 
   /* Color */
   --color-color: #18181b;
@@ -34,7 +34,7 @@
 @layer theme {
   .dark {
     --color-color: #f4f4f5;
-    --color-background: #09090b;
+    --color-background: #030712;
     --color-primary: #f59e0b;
     --color-secondary: #bae6fd;
     --color-turquoise: #5fdde5;
@@ -61,12 +61,12 @@
     --sky-pale: #61bbf7;
   }
 
-  html {
+  /* html {
     @apply overflow-x-hidden;
-  }
+  } */
 
   body {
-    @apply font-normal text-color text-fs-100 bg-background text-pretty transition-colors duration-300;
+    @apply font-body font-normal text-color text-fs-100 bg-background text-pretty transition-colors duration-300;
   }
 
   body p {
@@ -85,7 +85,7 @@
   h3,
   h4,
   h5 {
-    @apply font-headings font-light leading-[1.2] text-color text-balance my-6;
+    @apply font-light leading-[1.2] text-color text-balance my-6;
   }
 
   h1 {

@@ -1,11 +1,46 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content'
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '@/layouts/Layout.astro'
+import Container from '@/components/container.astro'
+import Code from '@/assets/svgs/code.svg'
+import BadgeTag from '@/components/badge-tag.astro'
+
+const proyects = await getCollection('proyects')
 ---
 
 <Layout>
-	<Welcome />
+  <section class="">
+    <Container>
+      <h2 class="flex items-center gap-x-2 font-semibold xl:text-5xl">
+        <Code /> Proyectos
+      </h2>
+      <div class="space-y-12">
+        {
+          proyects.map((proyect) => (
+            <article class="flex flex-col gap-y-8 md:flex-row md:gap-x-8">
+              <div class="md:w-1/2 sm:h-full">
+                <img
+                  class="rounded-xl overflow-hidden h-56  w-full object-cover object-center"
+                  src={proyect.data.featuredImage}
+                  alt={proyect.data.title}
+                />
+              </div>
+              <div class="md:w-1/2">
+                <h3 class="font-bold m-0 xl:text-3xl">{proyect.data.title}</h3>
+                <div class="mt-2 space-y-2">
+                  <div class="flex flex-wrap gap-2">
+                    {proyect.data.tags.map((tag) => (
+                      <BadgeTag text={tag} />
+                    ))}
+                  </div>
+                  <p class="">{proyect.data.description}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
 </Layout>
