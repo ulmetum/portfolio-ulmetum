@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content'
+
+import Container from '@/components/container.astro'
+import Code from '@/assets/svgs/code.svg'
+
+import Project from '@/components/sections/projects/project.astro'
+
+const projects = await getCollection('projects')
+---
+
+<section class="">
+  <Container>
+    <h2 class="flex items-center gap-x-2 font-semibold xl:text-5xl">
+      <Code /> Proyectos
+    </h2>
+    <div class="space-y-16">
+      {projects.map(({ data }) => <Project data={data} />)}
+    </div>
+  </Container>
+</section>
