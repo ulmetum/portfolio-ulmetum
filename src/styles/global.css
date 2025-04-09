@@ -59,6 +59,11 @@
     --purple-pale: #b06dcc;
     --purple-pale-rgb: 176, 109, 204;
     --sky-pale: #61bbf7;
+
+    --main-header-height: 4rem;
+    --transition-ease: cubic-bezier(0.83, 0, 0.17, 1);
+    --widthLabel: 60;
+    --heightLabel: 30;
   }
 
   /* html {
