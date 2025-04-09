@@ -2,12 +2,62 @@
 import ToggleTheme from '@/components/header/toggle-theme.astro'
 ---
 
-<header class="flex justify-center items-center py-4 gap-x-4">
-  <img src="" alt="" />
-  <nav class="flex justify-center items-center gap-x-4">
-    <a class="[font-size:15px] sm:text-fs-300" href="#proyectos">Proyectos</a>
-    <a class="[font-size:15px] sm:text-fs-300" href="#about">Sobre mi</a>
-    <a class="[font-size:15px] sm:text-fs-300" href="#contact">Contacto</a>
+<header
+  class="z-[99999] main-header fixed top-4 left-[2.5%] rounded-2xl w-[95%] h-(--main-header-height) flex md:justify-center px-2 items-center transition-all duration-500 ease-(--transition-ease) bg-white/75 backdrop-blur-sm"
+>
+  <nav class="flex justify-center items-center gap-x-2 md:gap-x-4">
+    <a class="[font-size:15px] sm:text-fs-300 dark:text-black" href="#proyectos"
+      >Proyectos</a
+    >
+    <a class="[font-size:15px] sm:text-fs-300 dark:text-black" href="#about"
+      >Sobre mi</a
+    >
+    <a class="[font-size:15px] sm:text-fs-300 dark:text-black" href="#contact"
+      >Contacto</a
+    >
   </nav>
-  <ToggleTheme />
+  <ToggleTheme widthLabel={40} heightLabel={25} />
+  <div
+    class="bar absolute bottom-1 left-1/2 h-[5px] -translate-x-1/2 rounded-full w-48 bg-transparent transition-all duration-500 ease-(--transition-ease) border border-black"
+  >
+  </div>
 </header>
+
+<style>
+  .main-header {
+    &.header-scrolled {
+      transform: translateY(-100%);
+      backdrop-filter: blur(0px);
+      background-color: white;
+      & .bar {
+        width: 96px;
+        background-color: var(--color);
+      }
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('.main-header') as HTMLDivElement
+  let lastScrollY = 0
+
+  header.addEventListener('mouseenter', () => {
+    header.classList.remove('header-scrolled')
+    console.log('mouseenter')
+  })
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY
+
+    const difference = scrollY - lastScrollY
+
+    if (Math.abs(difference) > 50) {
+      if (difference > 50) {
+        header.classList.add('header-scrolled')
+      } else {
+        header.classList.remove('header-scrolled')
+      }
+      lastScrollY = scrollY
+    }
+  })
+</script>
