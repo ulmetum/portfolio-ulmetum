@@ -1,8 +1,8 @@
 ---
+import Navigation from '@/components/header/navigation.astro'
 import '@/styles/global.css'
 import '@fontsource-variable/onest'
-
-import Navigation from '@/components/header/navigation.astro'
+import '@fontsource/syne-mono'
 ---
 
 <!doctype html>
@@ -15,9 +15,10 @@ import Navigation from '@/components/header/navigation.astro'
     <title>Astro Basics</title>
   </head>
   <body>
-    <Navigation />
-    <main class="px-4 pt-[calc(var(--main-header-height)+2rem)]">
+    <!-- <Navigation /> -->
+    <main class="px-4 flex flex-col justify-center py-12 min-h-screen">
       <slot />
+      <Navigation />
     </main>
   </body>
 </html>

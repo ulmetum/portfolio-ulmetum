@@ -1,0 +1,20 @@
+---
+import Github from '@/components/icons/github.icon.astro'
+import Mail from '@/components/icons/mail.icon.astro'
+
+interface Props {
+  classNames?: string
+  borderTop?: boolean
+}
+
+const { classNames, borderTop = true } = Astro.props
+---
+
+<nav class:list={['relative flex items-center size-max gap-x-2', classNames]}>
+  {borderTop && <div class="absolute w-full h-[1px] bg-dark top-0 left-0" />}
+
+  <a role="link" rel="noopener noreferrer" href="#github"><Github /></a>
+  <a href="mailto:ulmetum@gmail.com" role="link" rel="noopener noreferrer"
+    ><Mail /></a
+  >
+</nav>

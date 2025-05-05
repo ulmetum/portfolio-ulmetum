@@ -11,6 +11,9 @@ importers:
       '@fontsource-variable/onest':
         specifier: ^5.2.7
         version: 5.2.7
+      '@fontsource/syne-mono':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@tailwindcss/vite':
         specifier: ^4.1.3
         version: 4.1.3(vite@6.2.5(jiti@2.4.2)(lightningcss@1.29.2))
@@ -219,6 +222,9 @@ packages:
 
   '@fontsource-variable/onest@5.2.7':
     resolution: {integrity: sha512-iGsSGXwdqvaG5zJ6pmt7TKakYd5ADCzEZ4SPpaeueHrNiK3i6IbKrap4aK5vlak9E275BAHXv8Ac134r/PBREA==}
+
+  '@fontsource/syne-mono@5.2.5':
+    resolution: {integrity: sha512-IYXRrbjRUpwoIqea0k29b0uyGiNezTGuwiCFW+ZG0B1iuulBDdC41fHnCy8K6Dy53gh8lKb3EeuqUEwYNfDGLw==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -1698,6 +1704,8 @@ snapshots:
     optional: true
 
   '@fontsource-variable/onest@5.2.7': {}
+
+  '@fontsource/syne-mono@5.2.5': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
