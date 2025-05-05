@@ -16,9 +16,13 @@ import '@fontsource/syne-mono'
   </head>
   <body>
     <!-- <Navigation /> -->
-    <main class="px-4 flex flex-col justify-center py-12 min-h-screen">
+    <main
+      class="px-4 flex flex-col justify-center py-12 lg:flex-row lg:gap-x-8 min-h-screen w-[min(100%,1440px)] mx-auto"
+    >
       <slot />
-      <Navigation />
+      <Navigation
+        classNames="lg:w-1/2 lg:flex lg:items-end lg:justify-end pr-8"
+      />
     </main>
   </body>
 </html>

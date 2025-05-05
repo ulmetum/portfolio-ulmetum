@@ -1,27 +1,37 @@
 ---
+interface Props {
+  classNames?: string
+}
 
+const { classNames } = Astro.props
 ---
 
-<header>
+<header class:list={['', classNames]}>
   <nav class="flex flex-col">
     <a
       class="font-headings hover:-skew-x-12 hover:translate-x-2 duration-500 group transition-all ease-(var(--transition-ease))"
       href="/"
-      ><h2 class="transition-colors duration-500 group-hover:text-primary">
+      ><h2
+        class="text-5xl sm:text-7xl transition-colors duration-500 group-hover:text-primary"
+      >
         Inicio
       </h2></a
     >
     <a
       class="font-headings hover:-skew-x-12 hover:translate-x-2 duration-500 group transition-all ease-(var(--transition-ease))"
       href="/proyectos"
-      ><h2 class="transition-colors duration-500 group-hover:text-primary">
+      ><h2
+        class="text-5xl sm:text-7xl transition-colors duration-500 group-hover:text-primary"
+      >
         Proyectos
       </h2></a
     >
     <a
       class="font-headings hover:-skew-x-12 hover:translate-x-2 duration-500 group transition-all ease-(var(--transition-ease))"
       href="/sobre-mi"
-      ><h2 class="transition-colors duration-500 group-hover:text-primary">
+      ><h2
+        class="text-5xl sm:text-7xl transition-colors duration-500 group-hover:text-primary"
+      >
         Contacto
       </h2></a
     >
