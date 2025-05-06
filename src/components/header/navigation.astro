@@ -75,47 +75,4 @@ const { classNames } = Astro.props
       }
     })
   })
-  // import { animate } from 'motion'
-
-  // document.addEventListener('astro:page-load', () => {
-  //   const menuItems = document.querySelectorAll(
-  //     '.menu-item',
-  //   ) as NodeListOf<HTMLLinkElement>
-  //   const imageIcon = document.querySelector('.image-icon') as HTMLImageElement
-  //   const pathname = window.location.pathname.split('/')[1]
-
-  //   let currentIconSrc: string | null = null
-
-  //   menuItems.forEach((item) => {
-  //     const dataPath = item.dataset.path?.split('/')[1]
-  //     const dataIcon = item.dataset.icon || ''
-
-  //     if (pathname === dataPath) {
-  //       currentIconSrc = dataIcon
-  //       item.style.pointerEvents = 'none'
-  //       item.classList.add('active')
-  //     }
-
-  //     item.addEventListener('mouseover', async () => {
-  //       await animate(imageIcon, { opacity: 0 }, { duration: 0.2 })
-  //       imageIcon.src = dataIcon
-  //       await animate(imageIcon, { opacity: 1 }, { duration: 0.2 })
-  //     })
-  //     item.addEventListener('mouseout', async () => {
-  //       if (currentIconSrc) {
-  //         await animate(imageIcon, { opacity: 0 }, { duration: 0.2 })
-  //         imageIcon.src = currentIconSrc
-  //         await animate(imageIcon, { opacity: 1 }, { duration: 0.2 })
-  //       }
-  //     })
-  //   })
-
-  //   // Cargar por defecto la imagen que corresponda al path actual
-  //   if (currentIconSrc) {
-  //     imageIcon.src = currentIconSrc
-  //     imageIcon.onload = () => {
-  //       animate(imageIcon, { opacity: 1 }, { duration: 0.2 })
-  //     }
-  //   }
-  // })
 </script>
