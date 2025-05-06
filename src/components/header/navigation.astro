@@ -38,10 +38,10 @@ const { classNames } = Astro.props
         <a
           data-icon={item.icon.src}
           data-path={item.href}
-          class="menu-item font-headings duration-500 group transition-all ease-(var(--transition-ease))"
+          class="menu-item duration-500 group transition-all ease-(var(--transition-ease))"
           href={item.href}
         >
-          <h2 class="text-xl sm:text-3xl lg:text-2xl transition-colors duration-500 group-hover:text-primary">
+          <h2 class="text-xl sm:text-3xl lg:text-2xl transition-all duration-500 group-hover:-skew-x-12 group-hover:text-primary">
             {item.name}
           </h2>
         </a>
