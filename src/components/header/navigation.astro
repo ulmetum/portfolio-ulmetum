@@ -31,17 +31,17 @@ interface Props {
 const { classNames } = Astro.props
 ---
 
-<header class:list={['relative', classNames]}>
-  <nav class="flex flex-col">
+<header class:list={[' ', classNames]}>
+  <nav class="flex gap-x-2 sm:gap-x-4 justify-end">
     {
       itemsMenu.map((item) => (
         <a
           data-icon={item.icon.src}
           data-path={item.href}
-          class="menu-item font-headings hover:-skew-x-12 hover:translate-x-6 duration-500 group transition-all ease-(var(--transition-ease))"
+          class="menu-item font-headings duration-500 group transition-all ease-(var(--transition-ease))"
           href={item.href}
         >
-          <h2 class="text-5xl sm:text-7xl transition-colors duration-500 group-hover:text-primary">
+          <h2 class="text-xl sm:text-3xl lg:text-2xl transition-colors duration-500 group-hover:text-primary">
             {item.name}
           </h2>
         </a>

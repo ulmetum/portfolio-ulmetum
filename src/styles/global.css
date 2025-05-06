@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@midudev/tailwind-animations';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -29,6 +30,19 @@
   --text-fs-500: clamp(1.94rem, calc(1.39rem + 2.77vw), 3.53rem);
   --text-fs-600: clamp(2.33rem, calc(1.41rem + 4.63vw), 5rem);
   --text-fs-700: clamp(3rem, calc(2rem + 5vw), 5.6rem);
+
+  /* Custom Animations */
+  --animate-slide-full-in-bottom: slide-full-in-bottom 0.6s
+    cubic-bezier(0.83, 0, 0.17, 1) both;
+
+  @keyframes slide-full-in-bottom {
+    0% {
+      transform: translateY(110%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 }
 
 @layer theme {

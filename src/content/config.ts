@@ -5,6 +5,7 @@ const projects = defineCollection({
   loader: file('src/data/projects.json'),
   schema: z.object({
     id: z.number(),
+    type: z.string(),
     featuredImage: z.string(),
     title: z.string(),
     description: z.string(),
