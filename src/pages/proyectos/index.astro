@@ -8,7 +8,7 @@ const projects = await getCollection('projects')
 
 <Layout>
   <section class="flex flex-col gap-y-6 max-w-3xl lg:w-[65%] lg:pl-8 grow">
-    <h1 class="text-4xl font-semibold">Proyectos</h1>
+    <h1 class="font-headings">Proyectos</h1>
     <p class="text-base">
       Como todo en la vida, los trabajos que he desarrollado a lo largo de mi
       camino en el mundo de la programación web han ido evolucionando y
@@ -21,7 +21,7 @@ const projects = await getCollection('projects')
     <article class="flex flex-col gap-y-4">
       {
         projects.map((project, index) => (
-          <div class="group space-y-4">
+          <div class="group space-y-4 sm:space-y-2">
             <div class="flex flex-col gap-y-1 sm:flex-row sm:justify-between">
               <div class="overflow-hidden leading-none py-1">
                 <h3
