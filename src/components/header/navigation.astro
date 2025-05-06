@@ -1,4 +1,29 @@
 ---
+import HomeSketch from '@/assets/home-sketch.png'
+import ContactSketch from '@/assets/contact-sketch.png'
+import CodeSketch from '@/assets/code-sketch.png'
+import { Image } from 'astro:assets'
+
+const itemsMenu = [
+  {
+    name: 'Inicio',
+    href: '/',
+    icon: HomeSketch,
+  },
+  {
+    name: 'Proyectos',
+    href: '/proyectos',
+    icon: CodeSketch,
+  },
+  {
+    name: 'Contacto',
+    href: '/contacto',
+    icon: ContactSketch,
+  },
+]
+
+const [home, projects, contact] = itemsMenu
+
 interface Props {
   classNames?: string
 }
@@ -6,34 +31,97 @@ interface Props {
 const { classNames } = Astro.props
 ---
 
-<header class:list={['', classNames]}>
+<header class:list={['relative', classNames]}>
+  <!-- <img
+    class="opacity-0 image-icon absolute top-[25%] left-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-[200px] h-[200px] object-cover"
+    alt="Imagen de icono"
+    width={100}
+    height={100}
+  /> -->
   <nav class="flex flex-col">
-    <a
-      class="font-headings hover:-skew-x-12 hover:translate-x-2 duration-500 group transition-all ease-(var(--transition-ease))"
-      href="/"
-      ><h2
-        class="text-5xl sm:text-7xl transition-colors duration-500 group-hover:text-primary"
-      >
-        Inicio
-      </h2></a
-    >
-    <a
-      class="font-headings hover:-skew-x-12 hover:translate-x-2 duration-500 group transition-all ease-(var(--transition-ease))"
-      href="/proyectos"
-      ><h2
-        class="text-5xl sm:text-7xl transition-colors duration-500 group-hover:text-primary"
-      >
-        Proyectos
-      </h2></a
-    >
-    <a
-      class="font-headings hover:-skew-x-12 hover:translate-x-2 duration-500 group transition-all ease-(var(--transition-ease))"
-      href="/sobre-mi"
-      ><h2
-        class="text-5xl sm:text-7xl transition-colors duration-500 group-hover:text-primary"
-      >
-        Contacto
-      </h2></a
-    >
+    {
+      itemsMenu.map((item) => (
+        <a
+          data-icon={item.icon.src}
+          data-path={item.href}
+          class="menu-item font-headings hover:-skew-x-12 hover:translate-x-6 duration-500 group transition-all ease-(var(--transition-ease))"
+          href={item.href}
+        >
+          <h2 class="text-5xl sm:text-7xl transition-colors duration-500 group-hover:text-primary">
+            {item.name}
+          </h2>
+        </a>
+      ))
+    }
   </nav>
 </header>
+
+<style>
+  .active {
+    transform: skewX(calc(12deg * -1));
+    & h2 {
+      color: var(--color-primary);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const menuItems = document.querySelectorAll(
+      '.menu-item',
+    ) as NodeListOf<HTMLLinkElement>
+    const pathname = window.location.pathname.split('/')[1]
+
+    menuItems.forEach((item) => {
+      const dataPath = item.dataset.path?.split('/')[1]
+
+      if (pathname === dataPath) {
+        item.style.pointerEvents = 'none'
+        item.classList.add('active')
+      }
+    })
+  })
+  // import { animate } from 'motion'
+
+  // document.addEventListener('astro:page-load', () => {
+  //   const menuItems = document.querySelectorAll(
+  //     '.menu-item',
+  //   ) as NodeListOf<HTMLLinkElement>
+  //   const imageIcon = document.querySelector('.image-icon') as HTMLImageElement
+  //   const pathname = window.location.pathname.split('/')[1]
+
+  //   let currentIconSrc: string | null = null
+
+  //   menuItems.forEach((item) => {
+  //     const dataPath = item.dataset.path?.split('/')[1]
+  //     const dataIcon = item.dataset.icon || ''
+
+  //     if (pathname === dataPath) {
+  //       currentIconSrc = dataIcon
+  //       item.style.pointerEvents = 'none'
+  //       item.classList.add('active')
+  //     }
+
+  //     item.addEventListener('mouseover', async () => {
+  //       await animate(imageIcon, { opacity: 0 }, { duration: 0.2 })
+  //       imageIcon.src = dataIcon
+  //       await animate(imageIcon, { opacity: 1 }, { duration: 0.2 })
+  //     })
+  //     item.addEventListener('mouseout', async () => {
+  //       if (currentIconSrc) {
+  //         await animate(imageIcon, { opacity: 0 }, { duration: 0.2 })
+  //         imageIcon.src = currentIconSrc
+  //         await animate(imageIcon, { opacity: 1 }, { duration: 0.2 })
+  //       }
+  //     })
+  //   })
+
+  //   // Cargar por defecto la imagen que corresponda al path actual
+  //   if (currentIconSrc) {
+  //     imageIcon.src = currentIconSrc
+  //     imageIcon.onload = () => {
+  //       animate(imageIcon, { opacity: 1 }, { duration: 0.2 })
+  //     }
+  //   }
+  // })
+</script>
