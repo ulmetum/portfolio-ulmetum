@@ -23,7 +23,7 @@ const projects = await getCollection('projects')
         {
           projects.map((project, index) => (
             <div class="project group space-y-4 sm:space-y-0">
-              <div class="image-project hidden xl:block absolute opacity-0 top-1/2 -translate-y-1/2 right-8 w-[450px] aspect-video rounded-md transition-opacity duration-500">
+              <div class=" image-project hidden lg:block absolute opacity-0 top-1/2 -translate-y-1/2 right-8 w-[350px] aspect-video rounded-md transition-opacity duration-500">
                 <img
                   class=""
                   src={project.data.featuredImage}
@@ -77,16 +77,21 @@ const projects = await getCollection('projects')
     const projects = document.querySelectorAll(
       '.project',
     ) as NodeListOf<HTMLDivElement>
-    const imageProjects = document.querySelectorAll(
-      '.image-project',
-    ) as NodeListOf<HTMLImageElement>
 
-    projects.forEach((project, index) => {
+    projects.forEach((project) => {
       project.addEventListener('mouseover', () => {
-        imageProjects[index].classList.add('opacity-100')
+        const imageProject = project.querySelector(
+          '.image-project',
+        ) as HTMLImageElement
+        console.log({ imageProject })
+        imageProject.classList.add('opacity-100')
       })
       project.addEventListener('mouseout', () => {
-        imageProjects[index].classList.remove('opacity-100')
+        const imageProject = project.querySelector(
+          '.image-project',
+        ) as HTMLImageElement
+
+        imageProject.classList.remove('opacity-100')
       })
     })
   })
