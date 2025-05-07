@@ -1,5 +1,6 @@
 ---
 import BadgeTag from '@/components/badge-tag.astro'
+import Code from '@/components/icons/code.icon.astro'
 import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 
@@ -7,7 +8,7 @@ const projects = await getCollection('projects')
 ---
 
 <Layout>
-  <section>
+  <section class="grow">
     <div class="lg:w-[60%] flex flex-col gap-y-6 grow">
       <h1 class="font-headings">Proyectos</h1>
       <p class="text-base sm:text-lg">
@@ -23,9 +24,9 @@ const projects = await getCollection('projects')
         {
           projects.map((project, index) => (
             <div class="project group space-y-4 sm:space-y-0">
-              <div class=" image-project hidden lg:block absolute opacity-0 top-1/2 -translate-y-1/2 right-8 w-[350px] aspect-video rounded-md transition-opacity duration-500">
+              <div class="image-project z-10 hidden lg:block absolute opacity-0 top-1/2 -translate-y-1/2 right-8 w-[350px] xl:w-[450px] aspect-[16/13] rounded-md transition-opacity duration-500">
                 <img
-                  class=""
+                  class="absolute w-full h-full object-cover"
                   src={project.data.featuredImage}
                   alt={project.data.title}
                 />
@@ -42,7 +43,7 @@ const projects = await getCollection('projects')
                     {project.data.title}
                   </h3>
                 </div>
-                <div class="flex flex-wrap items-center gap-2 ">
+                <div class="animate-fade-in animate-delay-1000 flex flex-wrap items-center gap-2 ">
                   {project.data.tags.map((tag, i) => (
                     <div
                       style={{ transitionDelay: `${i * 50}ms` }}
@@ -69,6 +70,9 @@ const projects = await getCollection('projects')
         }
       </article>
     </div>
+    <Code
+      classNames="opacity-20 bottom-[4rem] absolute md:w-[750px] rotate-[-25deg] md:-bottom-[4rem] md:right-[6rem]"
+    />
   </section>
 </Layout>
 
