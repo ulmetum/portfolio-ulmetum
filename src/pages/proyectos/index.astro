@@ -32,17 +32,22 @@ const projects = await getCollection('projects')
                 />
               </div>
               <div class="flex flex-col gap-y-1 sm:flex-row sm:justify-between">
-                <div class="overflow-hidden leading-none py-1">
+                <a
+                  href="#"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  class="overflow-hidden leading-none py-1"
+                >
                   <h3
                     style={{
                       animationDelay: `${index * 100}ms`,
                       animationDuration: '2s',
                     }}
-                    class=" animate-slide-full-in-bottom animate-bezier-quart-in-out "
+                    class="hover:text-primary transition-colors duration-300 font-headings animate-slide-full-in-bottom animate-bezier-quart-in-out "
                   >
                     {project.data.title}
                   </h3>
-                </div>
+                </a>
                 <div class="animate-fade-in animate-delay-1000 flex flex-wrap items-center gap-2 ">
                   {project.data.tags.map((tag, i) => (
                     <div
@@ -71,7 +76,7 @@ const projects = await getCollection('projects')
       </article>
     </div>
     <Code
-      classNames="opacity-20 -z-10 bottom-[4rem] absolute md:w-[650px] rotate-[-25deg] md:bottom-[7rem] md:right-[6rem]"
+      classNames="opacity-20 -z-10 bottom-[8rem] absolute md:w-[550px] rotate-[-18deg] md:right-[6rem]"
     />
   </section>
 </Layout>
