@@ -80,12 +80,12 @@
     --heightLabel: 30;
   }
 
-  /* html {
+  html {
     @apply overflow-x-hidden;
-  } */
+  }
 
   body {
-    @apply font-body font-normal text-dark text-fs-100 bg-light text-pretty transition-colors duration-300;
+    @apply font-body font-normal text-dark text-fs-100 bg-light text-pretty transition-colors duration-300 min-h-screen;
   }
 
   body p {
