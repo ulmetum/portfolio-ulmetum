@@ -8,7 +8,7 @@ const projects = await getCollection('projects')
 ---
 
 <Layout>
-  <section class="grow">
+  <section class="grow flex gap-x-8 xl:gap-x-12">
     <div class="lg:w-[60%] flex flex-col gap-y-6 grow">
       <h1 class="font-headings">Proyectos</h1>
       <p class="text-base sm:text-lg">
@@ -23,14 +23,11 @@ const projects = await getCollection('projects')
       <article class="flex flex-col gap-y-4">
         {
           projects.map((project, index) => (
-            <div class="project group space-y-4 sm:space-y-0">
-              <div class="image-project z-10 hidden lg:block absolute opacity-0 top-1/2 -translate-y-1/2 right-8 w-[350px] xl:w-[450px] aspect-[16/13] rounded-md transition-opacity duration-500">
-                <img
-                  class="absolute w-full h-full object-cover"
-                  src={project.data.featuredImage}
-                  alt={project.data.title}
-                />
-              </div>
+            <div
+              data-image={project.data.featuredImage}
+              data-title={project.data.title}
+              class="project group space-y-4 sm:space-y-0"
+            >
               <div class="flex flex-col gap-y-1 sm:flex-row sm:justify-between">
                 <a
                   href="#"
@@ -75,6 +72,13 @@ const projects = await getCollection('projects')
         }
       </article>
     </div>
+    <div class="h-full lg:w-[40%] flex items-center relative">
+      <div
+        id="imageDisplay"
+        class="rounded-lg absolute w-full h-full transition-opacity duration-1000 bg-center bg-cover bg-no-repeat opacity-0 grayscale-50"
+      >
+      </div>
+    </div>
     <Code
       classNames="opacity-20 -z-10 bottom-[8rem] absolute md:w-[550px] rotate-[-18deg] md:right-[6rem]"
     />
@@ -86,21 +90,31 @@ const projects = await getCollection('projects')
     const projects = document.querySelectorAll(
       '.project',
     ) as NodeListOf<HTMLDivElement>
+    const imageProject = document.querySelector(
+      '.image-project',
+    ) as HTMLImageElement
+
+    const imageDisplay = document.getElementById(
+      'imageDisplay',
+    ) as HTMLDivElement
 
     projects.forEach((project) => {
       project.addEventListener('mouseover', () => {
-        const imageProject = project.querySelector(
-          '.image-project',
-        ) as HTMLImageElement
-        console.log({ imageProject })
-        imageProject.classList.add('opacity-100')
+        const src = project.dataset.image
+        imageDisplay.style.backgroundImage = `url(${src})`
+        imageDisplay.classList.remove('animate-fade-out-custom')
+        imageDisplay.classList.add('animate-fade-in-and-pan')
       })
-      project.addEventListener('mouseout', () => {
-        const imageProject = project.querySelector(
-          '.image-project',
-        ) as HTMLImageElement
 
-        imageProject.classList.remove('opacity-100')
+      project.addEventListener('mouseout', () => {
+        // Capturar la posición actual del background-position antes de quitar la clase para que no de un salto
+        const currentPosition =
+          getComputedStyle(imageDisplay).backgroundPosition
+
+        // Quitar la animación y fijar la posición actual
+        imageDisplay.style.backgroundPosition = currentPosition
+        imageDisplay.classList.remove('animate-fade-in-and-pan')
+        imageDisplay.classList.add('animate-fade-out-custom')
       })
     })
   })
