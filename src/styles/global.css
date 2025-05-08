@@ -90,14 +90,15 @@
 }
 
 @layer utilities {
+  /* Ejecutar dos animaciones en una sola clase */
   .animate-fade-in-and-pan {
     animation:
-      fade-in 0.35s linear forwards,
+      fade-in 0.15s linear forwards,
       background-pan 40s cubic-bezier(0.6, 0.05, 0.1, 0.9) infinite;
   }
 
   .animate-fade-out-custom {
-    animation: fade-out 0.35s linear forwards;
+    animation: fade-out 0.15s linear forwards;
   }
 }
 
