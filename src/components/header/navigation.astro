@@ -2,7 +2,6 @@
 import HomeSketch from '@/assets/home-sketch.png'
 import ContactSketch from '@/assets/contact-sketch.png'
 import CodeSketch from '@/assets/code-sketch.png'
-import { Image } from 'astro:assets'
 
 const itemsMenu = [
   {
@@ -22,7 +21,7 @@ const itemsMenu = [
   },
 ]
 
-const [home, projects, contact] = itemsMenu
+// const [home, projects, contact] = itemsMenu
 
 interface Props {
   classNames?: string
@@ -32,47 +31,84 @@ const { classNames } = Astro.props
 ---
 
 <header class:list={[' ', classNames]}>
-  <nav class="flex gap-x-2 sm:gap-x-4 justify-start">
+  <nav class="main-menu relative flex gap-x-2 sm:gap-x-4 justify-start">
     {
       itemsMenu.map((item) => (
-        <a
-          data-icon={item.icon.src}
-          data-path={item.href}
-          class="menu-item duration-500 group transition-all ease-(var(--transition-ease))"
-          href={item.href}
-        >
-          <h2 class="text-xl sm:text-2xl transition-all duration-200 group-hover:-skew-x-16 group-hover:text-primary">
-            {item.name}
-          </h2>
-        </a>
+        <div class="menu-item">
+          <a
+            data-icon={item.icon.src}
+            data-path={item.href}
+            class="group relative link-item duration-500 group transition-all ease-(var(--transition-ease))"
+            href={item.href}
+          >
+            <h2 class="text-xl sm:text-2xl transition-all duration-200 group-hover:-skew-x-16 group-hover:text-primary">
+              {item.name}
+            </h2>
+          </a>
+        </div>
       ))
     }
+    <div
+      class="underline absolute bottom-0 left-0 h-[1px] bg-primary transition-all duration-300"
+    >
+    </div>
   </nav>
 </header>
 
 <style>
-  .active {
+  .active h2 {
+    color: var(--color-primary);
     transform: skewX(calc(16deg * -1));
-    & h2 {
-      color: var(--color-primary);
-    }
   }
 </style>
 
 <script>
   document.addEventListener('astro:page-load', () => {
+    const underline = document.querySelector('.underline') as HTMLDivElement
     const menuItems = document.querySelectorAll(
       '.menu-item',
-    ) as NodeListOf<HTMLLinkElement>
+    ) as NodeListOf<HTMLDivElement>
     const pathname = window.location.pathname.split('/')[1]
+    const mainMenu = document.querySelector('.main-menu') as HTMLElement
+    const menuRect = mainMenu.getBoundingClientRect()
+
+    let activeLeft = 0
+    let activeWidth = 0
 
     menuItems.forEach((item) => {
-      const dataPath = item.dataset.path?.split('/')[1]
+      const linkItem = item.querySelector('.link-item') as HTMLAnchorElement
+      const dataPath = linkItem.dataset.path?.split('/')[1]
+      const linkRect = linkItem.getBoundingClientRect()
+      const isActive = pathname === dataPath
 
-      if (pathname === dataPath) {
-        item.style.pointerEvents = 'none'
-        item.classList.add('active')
+      if (isActive) {
+        // Aplico estos estilos solo al link pero no al padre de manera que el underline puede moverse al item activoz
+        linkItem.style.pointerEvents = 'none'
+        linkItem.classList.add('active')
+
+        activeWidth = linkRect.width
+        activeLeft = linkRect.left - menuRect.left
+
+        // Evitar animacion de underline entre rutas
+        if (underline.style.left !== `${activeLeft}px`) {
+          underline.style.transition = 'none'
+          underline.style.left = `${activeLeft}px`
+          underline.style.width = `${activeWidth}px`
+          underline.offsetHeight // Fuerza reflow
+          underline.style.transition = ''
+        }
       }
+
+      item.addEventListener('mouseover', () => {
+        const hoverRect = linkItem.getBoundingClientRect()
+        underline.style.width = `${hoverRect.width}px`
+        underline.style.left = `${hoverRect.left - menuRect.left}px`
+      })
+
+      item.addEventListener('mouseout', () => {
+        underline.style.width = `${activeWidth}px`
+        underline.style.left = `${activeLeft}px`
+      })
     })
   })
 </script>
