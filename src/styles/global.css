@@ -107,9 +107,11 @@
   }
   @keyframes move-out {
     from {
+      transform: scale(1);
       opacity: 1;
     }
     to {
+      transform: scale(0.98);
       opacity: 0;
     }
   }
@@ -117,9 +119,11 @@
   @keyframes move-in {
     from {
       clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+      transform: scale(0.95);
     }
     to {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      transform: scale(1);
     }
   }
 }
