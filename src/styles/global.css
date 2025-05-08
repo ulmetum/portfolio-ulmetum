@@ -38,6 +38,9 @@
     infinite;
   --animate-fade-in: fade-in 0.35s linear both;
   --animate-fade-out: fade-out 0.35s linear both;
+  --animate-bounce-scale-fade: bounce-scale-fade 0.65s
+    cubic-bezier(0.83, 0, 0.17, 1) both;
+  --animate-zoom-out: zoom-out 0.25s cubic-bezier(0.83, 0, 0.17, 1) both;
 
   @keyframes slide-full-in-bottom {
     0% {
@@ -75,6 +78,32 @@
       opacity: 0;
     }
   }
+
+  @keyframes bounce-scale-fade {
+    0% {
+      transform: scale(0.3);
+      opacity: 0;
+    }
+
+    30% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+
+    50% {
+      transform: scale(0.95);
+      opacity: 1;
+    }
+
+    70% {
+      transform: scale(1.03);
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
 }
 
 @layer theme {
@@ -94,11 +123,16 @@
   .animate-fade-in-and-pan {
     animation:
       fade-in 0.15s linear forwards,
-      background-pan 40s cubic-bezier(0.6, 0.05, 0.1, 0.9) infinite;
+      background-pan 60s linear infinite;
+    /* background-pan 40s cubic-bezier(0.6, 0.05, 0.1, 0.9) infinite; */
   }
 
   .animate-fade-out-custom {
     animation: fade-out 0.15s linear forwards;
+  }
+
+  .bounce-scale-fade {
+    animation: bounce-scale-fade 0.75s linear both;
   }
 }
 

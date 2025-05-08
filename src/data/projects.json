@@ -5,7 +5,7 @@
     "featuredImage": "/projects/laisladelyoga.webp",
     "title": "La Isla del Yoga",
     "description": "Espacio dedicado al bienestar, la calma interior y el autoconocimiento a través del yoga.",
-    "link": "https://astro-portfolio.netlify.app/",
+    "link": "https://laisladelyoga.com/",
     "tags": ["Next.js", "Tailwind CSS", "Wordpress"],
     "github": "#"
   },
@@ -15,7 +15,7 @@
     "featuredImage": "/projects/descubriendolosastros.webp",
     "title": "Descubriendolo los Astros",
     "description": "Descubre los misterios del cosmos y aprende más sobre los planetas, estrellas y constelaciones.",
-    "link": "https://astro-portfolio.netlify.app/",
+    "link": "https://descubriendolosastros.com/",
     "tags": ["Next.js", "Strapi", "Tailwind CSS"],
     "github": "#"
   },
@@ -25,7 +25,7 @@
     "featuredImage": "/projects/creandoyoga.webp",
     "title": "Creando Yoga",
     "description": "Escuela online dedicada a enseñar y profundizar en la práctica del yoga desde casa.",
-    "link": "https://astro-portfolio.netlify.app/",
+    "link": "https://creandoyoga.com/",
     "tags": ["Wordpress", "CSS", "JavaScript"],
     "github": "#"
   }
