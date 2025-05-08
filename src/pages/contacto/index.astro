@@ -5,9 +5,18 @@ import Layout from '@/layouts/Layout.astro'
 
 <Layout>
   <section class="grow">
-    <h1 class="font-headings">Contacto</h1>
-    <Send
-      classNames="opacity-20 bottom-[4rem] absolute md:w-[500px] rotate-[-10deg]  md:right-[6rem]"
-    />
+    <div class="overflow-hidden leading-none">
+      <h1
+        style={{ animationDuration: '2s' }}
+        class="font-headings animate-slide-full-in-bottom"
+      >
+        Contacto
+      </h1>
+    </div>
+    <div style={{ animationDelay: '1s' }} class="animate-fade-in">
+      <Send
+        classNames="opacity-20 bottom-[4rem] absolute md:w-[500px] rotate-[-10deg]  md:right-[6rem]"
+      />
+    </div>
   </section>
 </Layout>

@@ -7,14 +7,24 @@ import Layout from '@/layouts/Layout.astro'
 <Layout>
   <section class="relative grow">
     <div class="flex flex-col gap-y-6 lg:w-[60%]">
-      <h1 class="font-headings">Víctor M. Olmedo</h1>
-      <p class="flex flex-col">
+      <div class="overflow-hidden leading-none">
+        <h1
+          style={{ animationDuration: '2s' }}
+          class="font-headings animate-slide-full-in-bottom size-max"
+        >
+          Víctor Olmedo
+        </h1>
+      </div>
+      <p class="animate-fade-in animate-delay-1000 flex flex-col">
         Desarrollador Web Frontend <small
           class="bg-dark text-[13px] text-light py-[2px] px-2 rounded-md size-max"
           >en continuo desarrollo...</small
         >
       </p>
-      <div class="grow lg:flex lg:flex-col lg:justify-between">
+      <div
+        style={{ animationDelay: '1.1s' }}
+        class="animate-fade-in grow lg:flex lg:flex-col lg:justify-between"
+      >
         <p class="text-base sm:text-lg">
           Apasionado por crear interfaces de usuario accesibles, eficientes y
           visualmente atractivas. Llevo unos 10 años picando código y evitando
@@ -23,13 +33,14 @@ import Layout from '@/layouts/Layout.astro'
           usuario.
         </p>
       </div>
-      <MenuRrss classNames="pt-4 mt-6 relative " />
-      <!-- <MenuRrss
-        classNames="pt-4 mt-6 relative lg:absolute lg:bottom-0 lg:left-0"
-      /> -->
-      <Home
-        classNames="opacity-20 bottom-[2rem] -z-10 absolute md:w-[550px] rotate-[-18deg]  md:right-[6rem]"
-      />
+      <div style={{ animationDelay: '1.2s' }} class="animate-fade-in">
+        <MenuRrss classNames="pt-4 mt-6 relative " />
+      </div>
+      <div style={{ animationDelay: '1s' }} class="animate-fade-in">
+        <Home
+          classNames="opacity-20 bottom-[2rem] -z-10 absolute md:w-[550px] rotate-[-18deg]  md:right-[6rem]"
+        />
+      </div>
     </div>
   </section>
 </Layout>
