@@ -68,36 +68,47 @@ const { classNames } = Astro.props
     const menuItems = document.querySelectorAll(
       '.menu-item',
     ) as NodeListOf<HTMLDivElement>
-    const pathname = window.location.pathname.split('/')[1]
     const mainMenu = document.querySelector('.main-menu') as HTMLElement
-    const menuRect = mainMenu.getBoundingClientRect()
+    const pathname = window.location.pathname.split('/')[1]
+    let menuRect = mainMenu.getBoundingClientRect()
 
     let activeLeft = 0
     let activeWidth = 0
 
+    // Función que actualiza la posición y tamaño del underline
+    const updateUnderline = () => {
+      menuRect = mainMenu.getBoundingClientRect()
+
+      menuItems.forEach((item) => {
+        const linkItem = item.querySelector('.link-item') as HTMLAnchorElement
+        const dataPath = linkItem.dataset.path?.split('/')[1]
+        const linkRect = linkItem.getBoundingClientRect()
+        const isActive = pathname === dataPath
+
+        if (isActive) {
+          linkItem.style.pointerEvents = 'none'
+          linkItem.classList.add('active')
+
+          activeWidth = linkRect.width
+          activeLeft = linkRect.left - menuRect.left
+
+          // Evitar animación de underline entre rutas
+          if (underline.style.left !== `${activeLeft}px`) {
+            underline.style.transition = 'none'
+            underline.style.left = `${activeLeft}px`
+            underline.style.width = `${activeWidth}px`
+            underline.offsetHeight // Fuerza reflow
+            underline.style.transition = ''
+          }
+        }
+      })
+    }
+
+    // Llamada inicial para establecer la posición del underline
+    updateUnderline()
+
     menuItems.forEach((item) => {
       const linkItem = item.querySelector('.link-item') as HTMLAnchorElement
-      const dataPath = linkItem.dataset.path?.split('/')[1]
-      const linkRect = linkItem.getBoundingClientRect()
-      const isActive = pathname === dataPath
-
-      if (isActive) {
-        // Aplico estos estilos solo al link pero no al padre de manera que el underline puede moverse al item activoz
-        linkItem.style.pointerEvents = 'none'
-        linkItem.classList.add('active')
-
-        activeWidth = linkRect.width
-        activeLeft = linkRect.left - menuRect.left
-
-        // Evitar animacion de underline entre rutas
-        if (underline.style.left !== `${activeLeft}px`) {
-          underline.style.transition = 'none'
-          underline.style.left = `${activeLeft}px`
-          underline.style.width = `${activeWidth}px`
-          underline.offsetHeight // Fuerza reflow
-          underline.style.transition = ''
-        }
-      }
 
       item.addEventListener('mouseover', () => {
         const hoverRect = linkItem.getBoundingClientRect()
@@ -109,6 +120,11 @@ const { classNames } = Astro.props
         underline.style.width = `${activeWidth}px`
         underline.style.left = `${activeLeft}px`
       })
+    })
+
+    // Actualizar underline en redimensionado de ventana
+    window.addEventListener('resize', () => {
+      updateUnderline()
     })
   })
 </script>
