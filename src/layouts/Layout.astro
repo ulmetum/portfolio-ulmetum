@@ -5,10 +5,31 @@ import '@fontsource/syne-mono'
 import { ClientRouter } from 'astro:transitions'
 import Navigation from '@/components/header/navigation.astro'
 import Footer from '@/components/footer/footer.astro'
+
+const anim = {
+  old: {
+    name: 'move-out',
+    duration: '1s',
+    easing: 'cubic-bezier(0.87, 0, 0.13, 1)',
+    fillMode: 'both',
+  },
+  new: {
+    name: 'move-in',
+    duration: '1.5s',
+    // delay: '0.5s',
+    easing: 'cubic-bezier(0.87, 0, 0.13, 1)',
+    fillMode: 'both',
+  },
+}
+
+const customTransition = {
+  forwards: anim,
+  backwards: anim,
+}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate={customTransition}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
