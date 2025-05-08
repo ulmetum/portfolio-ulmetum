@@ -41,7 +41,7 @@ const { classNames } = Astro.props
             class="group relative link-item duration-500 group transition-all ease-(var(--transition-ease))"
             href={item.href}
           >
-            <h2 class="text-xl sm:text-2xl transition-all duration-200 group-hover:-skew-x-16 group-hover:text-primary">
+            <h2 class="text-xl sm:text-2xl transition-all duration-200 group-hover:text-primary">
               {item.name}
             </h2>
           </a>
@@ -58,7 +58,6 @@ const { classNames } = Astro.props
 <style>
   .active h2 {
     color: var(--color-primary);
-    transform: skewX(calc(16deg * -1));
   }
 </style>
 
@@ -86,13 +85,14 @@ const { classNames } = Astro.props
         const isActive = pathname === dataPath
 
         if (isActive) {
+          // Aplicar estilos solo al link para que el underline pueda moverse al item activo
           linkItem.style.pointerEvents = 'none'
           linkItem.classList.add('active')
 
           activeWidth = linkRect.width
           activeLeft = linkRect.left - menuRect.left
 
-          // Evitar animación de underline entre rutas
+          // Evitar animación de underline al navegar entre rutas
           if (underline.style.left !== `${activeLeft}px`) {
             underline.style.transition = 'none'
             underline.style.left = `${activeLeft}px`
