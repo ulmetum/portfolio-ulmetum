@@ -39,13 +39,11 @@ const customTransition = {
     <ClientRouter />
   </head>
   <body>
+    <Navigation classNames=" pt-4 w-[min(100%,1440px)] mx-auto px-4 " />
     <main
-      class="relative px-4 flex flex-col py-12 lg:flex-row lg:gap-x-8 min-h-screen w-[min(100%,1440px)] mx-auto"
+      class="relative px-4 flex flex-col py-6 lg:flex-row lg:gap-x-8 min-h-[calc(100dvh-90px)] w-[min(100%,1440px)] mx-auto"
     >
       <slot />
-      <Navigation
-        classNames=" mt-10 md:absolute md:bottom-12 md:w-[35%] md:left-0 md:pl-8 "
-      />
     </main>
     <Footer />
   </body>

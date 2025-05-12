@@ -30,13 +30,11 @@ interface Props {
 const { classNames } = Astro.props
 ---
 
-<header class:list={['animate-fade-in animate-delay-1000', classNames]}>
-  <nav
-    class="main-menu relative flex gap-x-2 sm:gap-x-4 justify-center md:justify-start"
-  >
+<header class:list={['animate-fade-in opacity-0', classNames]}>
+  <nav class="main-menu relative flex justify-center md:justify-start">
     {
       itemsMenu.map((item) => (
-        <div class="menu-item">
+        <div class="menu-item px-2 ">
           <a
             data-icon={item.icon.src}
             data-path={item.href}
