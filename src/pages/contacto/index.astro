@@ -1,17 +1,43 @@
 ---
 import Send from '@/components/icons/send.icon.astro'
+import MenuRrss from '@/components/menu-rrss.astro'
 import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout>
-  <section class="grow">
-    <div class="overflow-hidden leading-none">
-      <h1
-        style={{ animationDuration: '2s' }}
-        class="font-headings animate-slide-full-in-bottom"
+  <section class="grow flex">
+    <div class="flex flex-col grow gap-y-4">
+      <div class="md:w-[40%] md:self-end flex flex-col md:gap-y-6">
+        <div class="flex justify-center">
+          <h3 class="font-headings">Víctor Olmedo</h3>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <p class="text-base">Desarrollador Frontend</p>
+          <span> - Portfolio {new Date().getFullYear()} - </span>
+        </div>
+        <div class="flex items-center justify-center">
+          <p>+10 años convirtiendo ideas locas en webs reales</p>
+        </div>
+      </div>
+      <div
+        class="grow gap-y-4 flex flex-col items-center justify-center md:w-[60%]"
       >
-        Contacto
-      </h1>
+        <div>
+          <h1
+            style={{ animationDuration: '2s' }}
+            class="[grid-area:center] font-headings text-center max-w-3xl mx-auto"
+          >
+            ¿Quieres contactar conmigo?
+          </h1>
+        </div>
+        <div class="flex flex-col items-center justify-center">
+          <p class="text-base">Envíame un mensaje</p>
+          <p class="text-primary">ulmetum@gmail.com</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-center md:justify-end">
+        <MenuRrss classNames="pt-4 mt-6 relative" borderTop={false} />
+      </div>
     </div>
     <div style={{ animationDelay: '1s' }} class="animate-fade-in">
       <Send
