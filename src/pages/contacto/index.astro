@@ -34,7 +34,15 @@ import Layout from '@/layouts/Layout.astro'
         </div>
         <div class="flex flex-col items-center justify-center">
           <p class="text-base">Envíame un mensaje</p>
-          <p class="text-primary">ulmetum@gmail.com</p>
+          <div class="group overflow-hidden leading-none h-[34px]">
+            <div
+              class="text-center inner-mail transition-all duration-300 ease-(var(--transition-ease))"
+            >
+              <p class="text-primary">ulmetum@gmail.com</p>
+              <p class="text-primary">Clic para copiar email</p>
+              <p class="text-primary">Email copiado</p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="flex items-center justify-center md:justify-end">
@@ -48,3 +56,28 @@ import Layout from '@/layouts/Layout.astro'
     </div>
   </section>
 </Layout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const mail = document.querySelector('.inner-mail') as HTMLDivElement
+    let isTop = false
+
+    mail.addEventListener('pointerover', () => {
+      mail.style.transform = 'translateY(-34px)'
+    })
+    mail.addEventListener('pointermove', () => {
+      if (isTop) {
+        mail.style.transform = 'translateY(-68px)'
+        isTop = false
+      }
+    })
+    mail.addEventListener('pointerout', () => {
+      mail.style.transform = 'translateY(0)'
+    })
+    mail.addEventListener('click', () => {
+      isTop = true
+      navigator.clipboard.writeText('ulmetum@gmail.com')
+      mail.style.transform = 'translateY(-68px)'
+    })
+  })
+</script>
